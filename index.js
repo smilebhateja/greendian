@@ -7,10 +7,10 @@ app.get("/", function (req, res) {
   res.render("app");
 });
 
-app.get("*", function (req, res) {
-  res.send("ERROR 404: PAGE NOT FOUND");
-});
+// app.get("*", function (req, res) {
+//   res.send("ERROR 404: PAGE NOT FOUND");
+// });
 
-app.listen(3000 || process.env.PORT, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server On");
 });
