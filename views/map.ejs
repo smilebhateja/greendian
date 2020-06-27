@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carbon Footprint Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calculate your carbon footprint here.</h1>
+      <!-- <img src="map-india.jpg" alt="image map example" alt="image map example" width=50% height=70% usemap="#map_example"> -->
+      <img src="india.jpg" alt="India" style="border: 0;" usemap="#Map" />
+      <map name="Map" id="Map">
+        <area
+          shape="poly"
+          coords="110,63,96,80,77,68,74,57,74,48,80,41,74,28,61,20,77,9,93,6,106,16,121,30,136,27,152,20,157,34,142,51,148,64,152,72,135,74"
+          href="javascript:showForm(&#39;Jammu &amp; Kashmir&#39;);"
+          title="Jammu &amp; Kashmir"
+          alt="Jammu &amp; Kashmir"
+        />
+        <area
+          shape="poly"
+          coords="128,104,118,101,106,92,102,81,104,70,111,65,125,71,134,75,138,84"
+          href="javascript:showForm(&#39;Himachal Pradesh&#39;);"
+          title="Himachal Pradesh"
+          alt="Himachal Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="119,104,110,109,106,115,93,114,86,113,83,117,74,117,79,108,84,101,87,92,90,86,99,82"
+          href="javascript:showForm(&#39;Punjab&#39;);"
+          title="Punjab"
+          alt="Punjab"
+        />
+        <area
+          shape="poly"
+          coords="160,124,150,117,139,114,129,109,129,100,134,95,138,90,145,89,156,99,163,99,169,105"
+          href="javascript:showForm(&#39;Uttaranchal&#39;);"
+          title="Uttaranchal"
+          alt="Uttaranchal"
+        />
+        <area
+          shape="poly"
+          coords="204,198,210,187,217,173,219,165,213,149,195,143,173,136,157,124,138,115,126,107,123,118,124,134,119,146,131,162"
+          href="javascript:showForm(&#39;Uttar Pradesh&#39;);"
+          title="Uttar Pradesh"
+          alt="Uttar Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="269,163,259,178,243,188,228,192,213,193,212,185,217,176,223,169,220,159,218,153,214,142,261,156"
+          href="javascript:showForm(&#39;Bihar&#39;);"
+          title="Bihar"
+          alt="Bihar"
+        />
+        <area
+          shape="poly"
+          coords="276,223,292,220,289,209,286,202,284,191,279,185,276,178,284,167,272,162,265,168,267,189,260,198,246,200,251,208,255,217,265,223"
+          href="javascript:showForm(&#39;West Bengal&#39;);"
+          title="West Bengal"
+          alt="West Bengal"
+        />
+        <area
+          shape="poly"
+          coords="268,160,270,149,273,142,277,138,287,141,296,142,296,153"
+          href="javascript:showForm(&#39;Sikkim&#39;);"
+          title="Sikkim"
+          alt="Sikkim"
+        />
+        <area
+          shape="poly"
+          coords="313,139,330,133,337,133,348,124,357,115,366,114,374,114,389,119,391,108,377,99,373,92,360,96,351,95,320,120"
+          href="javascript:showForm(&#39;Arunachal Pradesh&#39;);"
+          title="Arunachal Pradesh"
+          alt="Arunachal Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="363,131,356,139,351,144,347,158,355,155,361,158,365,142"
+          href="javascript:showForm(&#39;Nagaland&#39;);"
+          title="Nagaland"
+          alt="Nagaland"
+        />
+        <area
+          shape="poly"
+          coords="294,156,298,140,306,140,323,134,341,130,364,115,371,119,357,134,348,143,346,158"
+          href="javascript:showForm(&#39;Assam&#39;);"
+          title="Assam"
+          alt="Assam"
+        />
+        <area
+          shape="poly"
+          coords="331,167,325,171,306,173,299,172,295,156,326,157"
+          href="javascript:showForm(&#39;Meghalaya&#39;);"
+          title="Meghalaya"
+          alt="Meghalaya"
+        />
+        <area
+          shape="poly"
+          coords="358,157,344,163,340,171,337,172,343,179,351,182,356,175,365,169,363,165"
+          href="javascript:showForm(&#39;Manipur&#39;);"
+          title="Manipur"
+          alt="Manipur"
+        />
+        <area
+          shape="poly"
+          coords="339,174,330,182,330,192,343,206,346,209,346,191,346,183"
+          href="javascript:showForm(&#39;Mizoram&#39;);"
+          title="Mizoram"
+          alt="Mizoram"
+        />
+        <area
+          shape="poly"
+          coords="209,194,236,188,255,182,264,169,270,182,264,192,243,202,251,217,244,223,238,224,226,215"
+          href="javascript:showForm(&#39;Jharkand&#39;);"
+          title="Jharkand"
+          alt="Jharkand"
+        />
+        <area
+          shape="poly"
+          coords="85,117,101,118,112,111,123,104,124,114,123,125,123,132,122,140,114,145,106,146"
+          href="javascript:showForm(&#39;Haryana&#39;);"
+          title="Haryana / Delhi"
+          alt="Haryana / Delhi"
+        />
+        <area
+          shape="poly"
+          coords="188,291,209,282,234,269,258,250,261,234,271,227,256,219,242,225,225,217,217,225,209,239,200,245"
+          href="javascript:showForm(&#39;Orissa&#39;);"
+          title="Orissa"
+          alt="Orissa"
+        />
+        <area
+          shape="poly"
+          coords="206,198,192,204,195,214,173,231,173,244,174,268,169,284,181,291,192,275,203,240,215,221,225,214"
+          href="javascript:showForm(&#39;Chattisgharh&#39;);"
+          title="Chattisgharh"
+          alt="Chattisgharh"
+        />
+        <area
+          shape="poly"
+          coords="84,227"
+          href="https://www.icicibank.com/go-green/carbon-world-day/indexef62.html?utm_event=go-green-carbon-footprint-calculator#"
+        />
+        <area
+          shape="poly"
+          coords="84,223,91,207,90,195,99,195,111,203,121,191,116,177,130,166,143,175,154,182,176,186,194,197,193,206,185,218,169,238,158,239,135,244,108,250,85,239"
+          href="javascript:showForm(&#39;Madhya Pradesh&#39;);"
+          title="Madhya Pradesh"
+          alt="Madhya Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="85,220,72,208,60,200,43,195,30,181,21,164,32,143,51,147,61,134,73,119,92,124,104,146,121,149,129,163,120,192"
+          href="javascript:showForm(&#39;Rajasthan&#39;);"
+          title="Rajasthan"
+          alt="Rajasthan"
+        />
+        <area
+          shape="poly"
+          coords="44,198,35,205,17,204,10,216,26,227,17,239,27,251,38,263,54,252,65,261,77,257,80,247,80,239,82,226,68,207"
+          href="javascript:showForm(&#39;Gujarat&#39;);"
+          title="Gujarat"
+          alt="Gujarat"
+        />
+        <area
+          shape="poly"
+          coords="71,334,57,260,80,255,82,239,107,250,136,243,169,241,174,269"
+          href="javascript:showForm(&#39;Maharashtra&#39;);"
+          title="Maharashtra"
+          alt="Maharashtra"
+        />
+        <area
+          shape="poly"
+          coords="121,392,100,379,85,346,83,335,107,315,130,302,141,361,148,367"
+          href="javascript:showForm(&#39;Karnataka&#39;);"
+          title="Karnataka"
+          alt="Karnataka"
+        />
+        <area
+          shape="poly"
+          coords="174,361,150,375,139,349,133,318,137,295,156,283,166,277,182,287,201,288,229,274"
+          href="javascript:showForm(&#39;Andhra Pradesh&#39;);"
+          title="Andhra Pradesh"
+          alt="Andhra Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="86,348,72,335,84,330"
+          href="javascript:showForm(&#39;Goa&#39;);"
+          title="Goa"
+          alt="Goa"
+        />
+        <area
+          shape="poly"
+          coords="135,446,133,426,134,415,125,409,122,399,108,385,95,380,121,440"
+          href="javascript:showForm(&#39;Kerala&#39;);"
+          title="Kerala"
+          alt="Kerala"
+        />
+        <area
+          shape="poly"
+          coords="139,448,134,416,123,395,134,382,149,374,176,363,171,399"
+          href="javascript:showForm(&#39;Tamil Nadu&#39;);"
+          title="Tamil Nadu"
+          alt="Tamil Nadu"
+        />
+        <area
+          shape="poly"
+          coords="322,203,317,185,328,176,328,191"
+          href="javascript:showForm(&#39;Tripura&#39;);"
+          title="Tripura"
+          alt="Tripura"
+        />
+      </map>
+    </div>
+    <form action="/calculate" method="GET">
+      <div class="form-group">
+        <label for="choose-state">Choose your state.</label>
+        <select class="form-control" id="choose-state-here">
+          <option>Andhra Pradesh</option>
+          <option>Arunachal Pradesh</option>
+          <option>Assam</option>
+          <option>Bihar</option>
+          <option>Chattisgharh</option>
+          <option>Goa</option>
+          <option>Gujarat</option>
+          <option>Haryana / Delhi</option>
+          <option>Himachal Pradesh</option>
+          <option>Jammu & Kashmir</option>
+          <option>Jharkand</option>
+          <option>Karnataka</option>
+          <option>Kerala</option>
+          <option>Madhya Pradesh</option>
+          <option>Maharashtra</option>
+          <option>Manipur</option>
+          <option>Meghalaya</option>
+          <option>Mizoram</option>
+          <option>Nagaland</option>
+          <option>Orissa</option>
+          <option>Punjab</option>
+          <option>Rajasthan</option>
+          <option>Sikkim</option>
+          <option>Tamil Nadu</option>
+          <option>Tripura</option>
+          <option>Uttar Pradesh</option>
+          <option>Uttaranchal</option>
+          <option>West Bengal</option>
+        </select>
+        <input type="submit" />
+      </div>
+    </form>
+  </body>
+</html>

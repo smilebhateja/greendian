@@ -1,0 +1,36 @@
+<!-- const state = "Haryana";
+const gender = "male";
+const familyMembers = 4;
+const electricityBill = 12000;
+const cylinders = 1;
+const wasteBags = 3;
+const travelBike = 10;
+const travelCar = 29;
+const cng = "yes";
+const travelBus = 0;
+const travelTrain = 11;
+const travelFlightHours = 120;
+const vegNonveg = "veg";
+const dairyConsumption = "Everyday";
+const meatConsumption = "Everyday";
+const clothesBuy = 3; -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report</title>
+  </head>
+  <body>
+    <div id="results"></div>
+    <a href="back to form"></a>
+    <script>
+      let results = [];
+      new URLSearchParams(window.location.search).forEach((value, name) => {
+        results.push([`${name}= ${value}`]);
+      });
+      console.log(results);
+    </script>
+  </body>
+</html>
