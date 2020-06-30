@@ -36,77 +36,78 @@
   <body>
     <div>
       <%- include ("partials/header") %>
-      <div class="section-report">
-        <h1 id="result-heading">Footprint Calculator Results</h1>
-        <p style="text-align: center; font-size: 25px;">
-          Your output is <span id="imp">2.0</span> tonnes.
+    </div>
+    <div class="section-report">
+      <h1 id="result-heading">Footprint Calculator Results</h1>
+      <p style="text-align: center; font-size: 25px;">
+        Your output is <span id="imp">2.0</span> tonnes.
+      </p>
+      <div style="justify-content: center;">
+        <p style="text-align: center;">
+          Your output will <span id="changingWord"></span>.
         </p>
-        <div style="justify-content: center;">
-          <p style="text-align: center;">
-            Your output will <span id="changingWord"></span>.
+      </div>
+
+      <div
+        class="d-flex flex-row bd-highlight mb-3"
+        style="width: 80%; align-items: center; margin-top: 50px;"
+      >
+        <div class="p-2 bd-highlight" style="width: 50%;">
+          <h2
+            style="text-align: center; margin-top: 20px; margin-bottom: 20px;"
+          >
+            Default Result
+          </h2>
+          <div class="report-canvas">
+            <canvas id="default"></canvas>
+          </div>
+        </div>
+        <div style="width: 50%;">
+          <h2
+            style="text-align: center; margin-top: 20px; margin-bottom: 20px;"
+          >
+            Categorical Result
+          </h2>
+          <div class="report-canvas">
+            <canvas id="categorical"></canvas>
+          </div>
+        </div>
+      </div>
+      <a href="/action">
+        <button class="btn btn-primary active btn-lg">Take Action!</button>
+      </a>
+      <!-- Last fact would be state-specific -->
+    </div>
+    <div class="section-report2">
+      <p id="climate-india">
+        Let's see how your actions are impacting Climate in India:
+      </p>
+      <div
+        class="d-flex flex-row bd-highlight mb-3"
+        style="width: 80%; align-items: center; margin-top: 50px;"
+      >
+        <div class="p-2 bd-highlight" style="width: 50%;">
+          <h2>About India</h2>
+          <p style="text-align: left;">
+            <span id="changingWord2"
+              >At 4°C warming, an extremely wet monsoon that currently has a
+              chance of occurring only once in 100 years is projected to occur
+              every 10 years by the end of the century.</span
+            >
           </p>
         </div>
-
-        <div
-          class="d-flex flex-row bd-highlight mb-3"
-          style="width: 80%; align-items: center; margin-top: 50px;"
-        >
-          <div class="p-2 bd-highlight" style="width: 50%;">
-            <h2
-              style="text-align: center; margin-top: 20px; margin-bottom: 20px;"
-            >
-              Default Result
-            </h2>
-            <div class="report-canvas">
-              <canvas id="default"></canvas>
-            </div>
-          </div>
-          <div style="width: 50%;">
-            <h2
-              style="text-align: center; margin-top: 20px; margin-bottom: 20px;"
-            >
-              Categorical Result
-            </h2>
-            <div class="report-canvas">
-              <canvas id="categorical"></canvas>
-            </div>
-          </div>
-        </div>
-        <a href="/action">
-          <button class="btn btn-primary active btn-lg">Take Action!</button>
-        </a>
-        <!-- Last fact would be state-specific -->
-      </div>
-      <div class="section-report2">
-        <p id="climate-india">
-          Let's see how your actions are impacting Climate in India:
-        </p>
-        <div
-          class="d-flex flex-row bd-highlight mb-3"
-          style="width: 80%; align-items: center; margin-top: 50px;"
-        >
-          <div class="p-2 bd-highlight" style="width: 50%;">
-            <h2>About India</h2>
-            <p style="text-align: left;">
-              <span id="changingWord2"
-                >At 4°C warming, an extremely wet monsoon that currently has a
-                chance of occurring only once in 100 years is projected to occur
-                every 10 years by the end of the century.</span
-              >
-            </p>
-          </div>
-          <div style="width: 50%;">
-            <!-- <h2>About  state %></h2> -->
-            <h2>About your state</h2>
-            <p>
-              Home to about 18 million people. Mumbai is at a high risk of
-              costal flooding by 2050 even if the target of limiting global
-              warming to 2*C is achieved.
-            </p>
-          </div>
+        <div style="width: 50%;">
+          <!-- <h2>About  state %></h2> -->
+          <h2>About your state</h2>
+          <p>
+            Home to about 18 million people. Mumbai is at a high risk of costal
+            flooding by 2050 even if the target of limiting global warming to
+            2*C is achieved.
+          </p>
         </div>
       </div>
     </div>
+
     <!-- Card heading :  (changing facts), -->
     <!-- "At 4°C warming, an extremely wet monsoon that currently has a chance of occurring only once in 100 years is projected to occur every 10 years by the end of 
 the century."
