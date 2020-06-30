@@ -1,17 +1,21 @@
 {
-  "name": "climate-positive_files",
+  "name": "climatepositive",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.3",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "firebase": "^7.15.5",
+    "firebase-admin": "^8.13.0",
+    "patternomaly": "^1.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

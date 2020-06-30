@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Greendian | Report</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div class="section-report">
+      <%- include ("partials/header") %>
+      <h1 id="result-heading">Footprint Calculator Results</h1>
+      <p style="text-align: center; font-size: 25px;">
+        Your output is <span id="imp">2.0</span> tonnes.
+      </p>
+      <div style="justify-content: center;">
+        <p style="text-align: center;">
+          Your output will <span id="changingWord"></span>.
+        </p>
+      </div>
+
+      <div
+        class="d-flex flex-row bd-highlight mb-3"
+        style="width: 80%; align-items: center; margin-top: 50px;"
+      >
+        <div class="p-2 bd-highlight" style="width: 50%;">
+          <h2
+            style="text-align: center; margin-top: 20px; margin-bottom: 20px;"
+          >
+            Default Result
+          </h2>
+          <div class="report-canvas">
+            <canvas id="default"></canvas>
+          </div>
+        </div>
+        <div style="width: 50%;">
+          <h2
+            style="text-align: center; margin-top: 20px; margin-bottom: 20px;"
+          >
+            Categorical Result
+          </h2>
+          <div class="report-canvas">
+            <canvas id="categorical"></canvas>
+          </div>
+        </div>
+      </div>
+      <a href="/action">
+        <button class="btn btn-primary active btn-lg">Take Action!</button>
+      </a>
+      <!-- Last fact would be state-specific -->
+    </div>
+    <div class="section-report2">
+      <p id="climate-india">
+        Let's see how your actions are impacting Climate in India:
+      </p>
+      <div
+        class="d-flex flex-row bd-highlight mb-3"
+        style="width: 80%; align-items: center; margin-top: 50px;"
+      >
+        <div class="p-2 bd-highlight" style="width: 50%;">
+          <h2>About India</h2>
+          <p style="text-align: left;">
+            <span id="changingWord2"
+              >At 4°C warming, an extremely wet monsoon that currently has a
+              chance of occurring only once in 100 years is projected to occur
+              every 10 years by the end of the century.</span
+            >
+          </p>
+        </div>
+        <div style="width: 50%;">
+          <!-- <h2>About  state %></h2> -->
+          <h2>About your state</h2>
+          <p>
+            Home to about 18 million people. Mumbai is at a high risk of costal
+            flooding by 2050 even if the target of limiting global warming to
+            2*C is achieved.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Card heading :  (changing facts), -->
+    <!-- "At 4°C warming, an extremely wet monsoon that currently has a chance of occurring only once in 100 years is projected to occur every 10 years by the end of 
+the century."
+Under 4°C warming, the west coast and southern India are projected to shift to new, high-temperature climatic regimes with significant impacts on agriculture.
+Under 2°C warming by the 2050s, the country may need to import more than twice the amount of food-grain than would be required without climate change. *single line changing*-->
+
+    <!-- Calculation Script-->
+    <script>
+      const r = {};
+      new URLSearchParams(window.location.search).forEach((value, name) => {
+        r[name] = value;
+        // console.log(r);
+      });
+      console.log(r.cylinders);
+
+      const state = r.state || "Haryana";
+      const gender = r.gender || "male";
+      const familyMembers = r.familyMembers || 4;
+      const electricityBill = r.electricityBill || 12000;
+      const cylinders = r.cylinders || 1;
+      const wasteBags = r.wasteBags || 3;
+      const travelBike = r.travelBike || 10;
+      const travelCar = r.travelCar || 29;
+      const cng = r.cng || "yes";
+      const travelBus = r.travelBus || 0;
+      const travelTrain = r.travelTrain || 11;
+      const travelFlightHours = r.travelFlightHours || 30;
+      const vegNonveg = r.vegNonveg || "nonVeg";
+      const dairyConsumption = r.dairyConsumption || "Everyday";
+      const meatConsumption = r.meatConsumption || "Everyday";
+      const clothesBuy = r.buy || 3;
+
+      var emissionFactors = [
+        ["Bihar", 2.1],
+        ["Jharkhand", 1.68],
+        ["Orissa", 0.88],
+        ["West Bengal", 1.29],
+        ["Sikkim", 1.04],
+        ["Assam", 1.21],
+        ["Manipur", 1.56],
+        ["Meghalaya", 0.42],
+        ["Nagaland", 1.41],
+        ["Tripura", 1.69],
+        ["Arunachal Pradesh", 0.11],
+        ["Mizoram", 0.65],
+        ["Haryana", 1.27],
+        ["Himachal Pradesh", 0.26],
+        ["Jammu & Kashmir", 0.81],
+        ["Punjab", 0.97],
+        ["Rajasthan", 1.21],
+        ["Uttar Pradesh", 1.61],
+        ["Uttarakhand", 0.12],
+        ["Delhi", 1.05],
+        ["Andhra Pradesh", 0.91],
+        ["Gujarat", 1.02],
+        ["Madhya Pradesh", 1.68],
+        ["Chhattisgarh", 1.37],
+        ["Maharashtra", 1.26],
+        ["Goa", 0.71],
+        ["Karnataka", 0.7],
+        ["Kerala", 0.13],
+        ["Tamil Nadu", 1.13],
+      ];
+      let emissionFactor;
+      for (var i = 0; i < emissionFactors.length; i++) {
+        if (emissionFactors[i][0] == state) {
+          emissionFactor = emissionFactors[i][1];
+        }
+      }
+      var emissionFuel =
+        Math.floor(
+          (((electricityBill / 5.94) * emissionFactor) / familyMembers +
+            (cylinders * 0.66 * 61.71) / familyMembers +
+            (wasteBags * 2.5 * 1.2 * 30) / familyMembers) *
+            100
+        ) / 100;
+      var emissionTravel =
+        (travelBike / 60) * 2.4 * 30 +
+        travelBus * 0.015 * 30 +
+        (travelTrain * 0.008) / 12 +
+        (travelFlightHours * 871 * 0) / 125 / 12;
+
+      if (cng == "no") {
+        emissionTravel += (travelCar / 20) * 2.4 * 30;
+      } else if (cng == "yes") {
+        emissionTravel += travelCar * 0.112 * 30;
+      }
+
+      emissionTravel = Math.floor(emissionTravel * 100) / 100;
+
+      function returnDays(temp) {
+        switch (temp) {
+          case "Everyday":
+            return 30;
+          case "3-4 times a week":
+            return 14;
+          case "1-2 times a week":
+            return 6;
+          case "once a month":
+            return 1;
+          case "2-3 times a day":
+            return "multiple";
+        }
+      }
+
+      if (vegNonveg == "veg") {
+        if (gender == "male") {
+          var emissionFood = 0.567 * 30;
+        } else {
+          var emissionFood = 0.427 * 30;
+        }
+      } else if (vegNonveg == "nonVeg") {
+        var meat = returnDays(meatConsumption);
+        if (meat == "multiple") {
+          if (gender == "male") {
+            var emissionFood = [0.953 + 0.08] * 30;
+          } else {
+            var emissionFood = [0.567 + 0.08] * 30;
+          }
+        } else {
+          if (gender == "male") {
+            var emissionFood = [0.953 * meat + 0.567 * (30 - meat)];
+          } else {
+            var emissionFood = [0.813 * meat + 0.427 * (30 - meat)];
+          }
+        }
+      }
+
+      dairy = returnDays(dairyConsumption);
+      if (dairy == "multiple") {
+        dairy = Number(2.5 * 30);
+      }
+      emissionFood = Number(emissionFood);
+      emissionFood += dairy * 0.078 * 30;
+      emissionFood = Math.round(emissionFood * 100) / 100;
+
+      var emissionProduct = Math.round(clothesBuy * 15 * 100) / 100;
+      var emissionTotal =
+        Math.round(
+          (emissionFuel + emissionFood + emissionTravel + emissionProduct) * 1.2
+        ) / 100;
+      console.log(emissionTotal);
+
+      // Generating Report
+      var ctx = document.getElementById("default").getContext("2d");
+      var chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [
+            "Tonnes of CO2 per year",
+            "National Average",
+            "Annual Budget",
+          ],
+          datasets: [
+            {
+              label: "Your Footprint Stats",
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+              ],
+              data: [emissionTotal, 2, 1.5],
+            },
+          ],
+        },
+        options: {},
+      });
+      var ctx = document.getElementById("categorical").getContext("2d");
+      var chart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["Fuel", "Travel", "Food", "Products"],
+          datasets: [
+            {
+              backgroundColor: [
+                "rgb(25, 199, 232)",
+                "rgb(25, 192, 132)",
+                "rgb(155, 39, 132)",
+                "rgb(200, 212, 112)",
+              ],
+              data: [
+                emissionFuel,
+                emissionTravel,
+                emissionFood,
+                emissionProduct,
+              ],
+            },
+          ],
+        },
+        options: {},
+      });
+
+      // Array of words
+      const words = [
+        `be offseted by ${Math.floor(emissionTotal / 0.007)} trees`,
+        `be offseted by not driving car for ${Math.floor(
+          238 * emissionTotal
+        )} days`,
+        `melt ${Math.floor(
+          3 * emissionTotal
+        )} m3 of ice in Arctic Sea Glaciers`,
+      ];
+      // Function that executes every 2000 milliseconds
+      var t = setInterval(function () {
+        // Random number generator
+        var randomNumber = Math.round(Math.random() * (words.length - 1));
+        // Change the word in the span for a random one in the array of words
+        $("#changingWord").html(words[randomNumber]);
+      }, 2500);
+
+      // Array of words: India
+      const wordsIndia = [
+        "At 4°C warming, an extremely wet monsoon that currently has a chance of occurring only once in 100 years is projected to occur every 10 years by the end of the century.",
+        "Under 4°C warming, the west coast and southern India are projected to shift to new, high-temperature climatic regimes with significant impacts on agriculture.",
+        "Under 2°C warming by the 2050s, the country may need to import more than twice the amount of food-grain than would be required without climate change.",
+      ];
+      // Function that executes every 2000 milliseconds
+      var t2 = setInterval(function () {
+        // Random number generator
+        var randomNumber2 = Math.round(Math.random() * (words.length - 1));
+        // Change the word in the span for a random one in the array of words
+        $("#changingWord2").html(wordsIndia[randomNumber2]);
+      }, 2500);
+    </script>
+  </body>
+</html>

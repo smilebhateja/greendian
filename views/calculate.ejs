@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>calculate Your Carbon Footprint</title>
-    <h1>And then offset it</h1>
+    <title>Calculate | Greendian</title>
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
       crossorigin="anonymous"
     />
     <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="app.css" />
   </head>
   <body>
+    <%- include ("partials/header") %>
     <div class="container">
       <h1>Calculate your carbon footprint here.</h1>
-      <form action="/results">
+      <form action="/results" method="POST">
         <div class="form-group">
           <label for="familyMembers"
             >Number of members in the house/flat you live.</label
@@ -40,7 +42,6 @@
             min="0"
             max="5"
             step="1"
-            id="familyMembers"
             name="familyMembers"
           />
         </div>
@@ -51,7 +52,6 @@
             class="form-check-input"
             type="radio"
             name="gender"
-            id="gender"
             value="male"
           />
           <label class="form-check-label" for="exampleRadios1">
@@ -62,7 +62,6 @@
             class="form-check-input"
             type="radio"
             name="gender"
-            id="gender"
             value="female"
           />
           <label class="form-check-label" for="exampleRadios2">
@@ -74,11 +73,7 @@
           <label for="electricityBill"
             >What was your electricity bill last month? (In rupees)</label
           >
-          <input
-            class="form-control"
-            id="electricityBill"
-            name="electricityBill"
-          />
+          <input class="form-control" name="electricityBill" />
         </div>
         <!-- Next question -->
         <div class="form-group">
@@ -90,7 +85,6 @@
             min="0"
             max="5"
             step="0.5"
-            id="cylinders"
             name="cylinders"
           />
         </div>
@@ -106,7 +100,6 @@
             min="0"
             max="5"
             step="0.5"
-            id="wasteBags"
             name="wasteBags"
           />
         </div>
@@ -121,7 +114,6 @@
             min="0"
             max="50"
             step="10"
-            id="travelBike"
             name="travelBike"
           />
         </div>
@@ -136,31 +128,18 @@
             min="0"
             max="50"
             step="10"
-            id="travelCar"
             name="travelCar"
           />
         </div>
         <!-- Next Question -->
         <div class="form-group">
           <label for="family-members">Is your car CNG powered</label><br />
-          <input
-            class="form-check-input"
-            type="radio"
-            name="cng"
-            id="cng"
-            value="yes"
-          />
+          <input class="form-check-input" type="radio" name="cng" value="yes" />
           <label class="form-check-label" for="cng">
             yes
           </label>
           <br />
-          <input
-            class="form-check-input"
-            type="radio"
-            name="cng"
-            id="cng"
-            value="no"
-          />
+          <input class="form-check-input" type="radio" name="cng" value="no" />
           <label class="form-check-label" for="cng">
             no
           </label>
@@ -176,7 +155,6 @@
             min="0"
             max="50"
             step="10"
-            id="travelBus"
             name="travelBus"
           />
         </div>
@@ -193,7 +171,6 @@
             min="0"
             max="5000"
             step="1000"
-            id="travelTrain"
             name="travelTrain"
           />
         </div>
@@ -202,11 +179,7 @@
           <label for="travelFlightHours"
             >Average flight hours in a year? (in hrs)</label
           >
-          <input
-            class="form-control"
-            id="travelFlightHours"
-            name="travelFlightHours"
-          />
+          <input class="form-control" name="travelFlightHours" />
         </div>
         <!-- Next Question -->
         <div class="form-group">
@@ -215,7 +188,6 @@
             class="form-check-input"
             type="radio"
             name="vegNonveg"
-            id="vegNonveg"
             value="veg"
           />
           <label class="form-check-label" for="exampleRadios1">
@@ -226,15 +198,9 @@
             class="form-check-input"
             type="radio"
             name="vegNonveg"
-            id="vegNonveg"
             value="nonVeg"
           />
-          <label
-            class="form-check-label"
-            for="exampleRadios2"
-            id="vegNonveg"
-            name="vegNonveg"
-          >
+          <label class="form-check-label" for="exampleRadios2" name="vegNonveg">
             non-veg?
           </label>
         </div>
@@ -248,7 +214,6 @@
             class="form-check-input"
             type="radio"
             name="dairyConsumption"
-            id="dairyConsumption"
             value="2-3 times a day"
           />
           <label class="form-check-label" for="dairyConsumption1">
@@ -259,7 +224,6 @@
             class="form-check-input"
             type="radio"
             name="dairyConsumption"
-            id="dairyConsumption"
             value="Everyday"
           />
           <label class="form-check-label" for="dairyConsumption">
@@ -270,7 +234,6 @@
             class="form-check-input"
             type="radio"
             name="dairyConsumption"
-            id="dairyConsumption"
             value="3-4 times a week"
           />
           <label class="form-check-label" for="dairyConsumption">
@@ -281,7 +244,6 @@
             class="form-check-input"
             type="radio"
             name="dairyConsumption"
-            id="dairyConsumption"
             value="1-2 times a week"
           />
           <label class="form-check-label" for="dairyConsumption">
@@ -297,7 +259,6 @@
             class="form-check-input"
             type="radio"
             name="meatConsumption"
-            id="meatConsumption"
             value="2-3 times a day"
           />
           <label class="form-check-label" for="meatConsumption">
@@ -308,7 +269,6 @@
             class="form-check-input"
             type="radio"
             name="meatConsumption"
-            id="meatConsumption"
             value="Everyday"
           />
           <label class="form-check-label" for="meatConsumption">
@@ -319,7 +279,6 @@
             class="form-check-input"
             type="radio"
             name="meatConsumption"
-            id="meatConsumption"
             value="3-4 times a week"
           />
           <label class="form-check-label" for="meatConsumption">
@@ -330,7 +289,6 @@
             class="form-check-input"
             type="radio"
             name="meatConsumption"
-            id="meatConsumption"
             value="1-2 times a week"
           />
           <label class="form-check-label" for="meatConsumption">
@@ -350,9 +308,51 @@
             min="0"
             max="10"
             step="1"
-            id="clothesBuy"
             name="clothesBuy"
           />
+        </div>
+        <div class="form-group">
+          <label for="choose-state">Choose your state.</label>
+          <select class="form-control" id="choose-state">
+            <option>Andhra Pradesh</option>
+            <option>Arunachal Pradesh</option>
+            <option>Assam</option>
+            <option name="Bihar" value="Bihar">Bihar</option>
+            <option>Chattisgharh</option>
+            <option>Goa</option>
+            <option>Gujarat</option>
+            <option>Haryana / Delhi</option>
+            <option>Himachal Pradesh</option>
+            <option>Jammu & Kashmir</option>
+            <option>Jharkand</option>
+            <option>Karnataka</option>
+            <option>Kerala</option>
+            <option>Madhya Pradesh</option>
+            <option>Maharashtra</option>
+            <option>Manipur</option>
+            <option>Meghalaya</option>
+            <option>Mizoram</option>
+            <option>Nagaland</option>
+            <option>Orissa</option>
+            <option>Punjab</option>
+            <option>Rajasthan</option>
+            <option>Sikkim</option>
+            <option>Tamil Nadu</option>
+            <option>Tripura</option>
+            <option>Uttar Pradesh</option>
+            <option>Uttaranchal</option>
+            <option>West Bengal</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="username">Your name</label>
+          <br />
+          <input class="form-control" name="username" />
+        </div>
+        <div class="form-group">
+          <label for="username">Your email</label>
+          <br />
+          <input class="form-control" name="email" />
         </div>
         <div>
           <input type="submit" />

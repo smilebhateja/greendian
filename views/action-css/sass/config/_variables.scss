@@ -1,0 +1,94 @@
+// --------------------------------------------------------------------
+// Variables
+// All global variables for the app
+// --------------------------------------------------------------------
+
+// Base em reference
+$base-reference: 18px;
+
+// Colors
+// All colors in the app
+// --------------------------------------------------------------------
+
+// Colors
+$primary: #60D481;
+
+// Greyscale
+$white: #ffffff;
+$grey-light: #FAFAFB;
+$grey-mid: #D8DFE2;
+$grey-dark: #656E78;
+$black: #27494B;
+
+
+// Tints
+$primary-dark: mix($primary, $black, 85%);
+$primary-darker: mix($primary, $black, 60%);
+$primary-light: mix($primary, $white, 30%);
+
+// Hover & Active States
+$primary-hover: mix($primary, $white, 85%);
+$active-hover: $white;
+$white-hover: mix($white, $black, 98%);
+
+// --------------------------------------------------------------------
+
+
+
+// Fonts
+// All base font styles
+// --------------------------------------------------------------------
+
+// Import Google Web Fonts
+@import 'https://fonts.googleapis.com/css?family=Lato:400,400i,900';
+@import 'https://fonts.googleapis.com/css?family=Arvo';
+
+// Font Stacks
+$display: 'Lato', 'Helvetica', sans-serif !default;
+$lato: 'Lato', 'Helvetica', sans-serif !default;
+$arvo: 'Arvo', sans-serif !default;
+
+// Defaults
+$base-font-family: $lato;
+$base-font-color: $black;
+$base-font-size: $base-reference;
+$base-line-height: 1.65;
+
+// Helpers
+$letter-spacing-wide: 2px;
+
+// --------------------------------------------------------------------
+
+
+// Utilities
+// --------------------------------------------------------------------
+
+// Margins
+$margin: 1rem !default;
+$margin-small: $margin / 1.5;
+$margin-big: $margin * 2;
+
+// Padding
+$padding: 1rem !default;
+$padding-small: $padding / 1.5;
+$padding-mid: $padding * 1.5;
+$padding-big: $padding * 2;
+
+
+// Button Shadows
+$btn-shadow: 3px 4px 0 $primary-dark;
+$btn-shadow-hover: 5px 7px 0 $primary-dark;
+
+// General Settings
+$global-radius: 3px;
+$transition: .3s ease-in-out;
+
+// --------------------------------------------------------------------
+
+
+// Breakpoints
+// --------------------------------------------------------------------
+
+$big-break: 1100px;
+$mid-break: 1020px;
+$small-break: 900px;
