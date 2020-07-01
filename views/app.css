@@ -2,6 +2,21 @@ body{
   font-family: 'Montserrat', sans-serif;
 }
 
+.form-layout{
+  margin-top: 30px;
+}
+
+.form-group{
+  margin-top: 20px;
+}
+
+.col-form-label{
+  margin-right: 10px;
+}
+.form-control{
+  font-weight: lighter;
+}
+
 #result-heading{
   margin-top: 50px;
   padding-top: 50px;
@@ -14,7 +29,7 @@ body{
   font-weight: bold;
 }
 
-#imp{
+#emissionFinal{
   font-size: 50px;
 }
 
@@ -87,6 +102,15 @@ body{
 .section-text{
   align-items: right;
   justify-content: end;
+}
+
+#submit-button{
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 /* 
 .report-canvas{

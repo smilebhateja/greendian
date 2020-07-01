@@ -30,110 +30,113 @@
     <%- include ("partials/header") %>
     <div class="container">
       <h1>Calculate your carbon footprint here.</h1>
-      <form action="/results" method="POST">
-        <div class="form-group">
-          <label for="familyMembers"
-            >Number of members in the house/flat you live.</label
-          >
-          <label for="familyMembers">0 - 5 members, step= 1</label>
-          <input
-            type="range"
-            class="custom-range"
-            min="0"
-            max="5"
-            step="1"
-            name="familyMembers"
-          />
-        </div>
-        <!-- //gender -->
-        <div class="form-group">
-          <label for="gender">You are a?</label><br />
-          <input
-            class="form-check-input"
-            type="radio"
-            name="gender"
-            value="male"
-          />
-          <label class="form-check-label" for="exampleRadios1">
-            Male
-          </label>
-          <br />
-          <input
-            class="form-check-input"
-            type="radio"
-            name="gender"
-            value="female"
-          />
-          <label class="form-check-label" for="exampleRadios2">
-            female
-          </label>
+      <form action="/results" method="POST" class="form-layout">
+        <div class="mb-3 form-group">
+          <div class="form-group">
+            <label for="familyMembers" class="col-sm-6 col-form-label"
+              >Number of members in the house/flat you live. (0 - 5 members, step= 1)</label>
+            <input
+              type="range"
+              class="custom-range col-sm-4"
+              min="0"
+              max="5"
+              step="1"
+              name="familyMembers"
+              oninput="num1.value = this.value"
+            />
+            <output id="num1">0</output>
+          </div>
+          <!-- //gender -->
+          <div class="form-group">
+            <label for="gender">You are a?</label><br />
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="male"
+            />
+            <label class="form-check-label" for="exampleRadios1">
+              Male
+            </label>
+            <br />
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="female"
+            />
+            <label class="form-check-label" for="exampleRadios2">
+              female
+            </label>
+          </div>
         </div>
         <!-- //Next question -->
-        <div class="form-group">
-          <label for="electricityBill"
-            >What was your electricity bill last month? (In rupees)</label
-          >
-          <input class="form-control" name="electricityBill" />
-        </div>
+        <div class="form-group row mb-3">
+          <label for="electricityBill" class="col-sm-6 col-form-label">What was your electricity bill last month? (In rupees)</label>
+          <div class="col-sm-4">
+            <input class="form-control" name="electricityBill">
+          </div>
         <!-- Next question -->
         <div class="form-group">
-          <label for="cylinders">Number of cylinders per month?</label>
-          <label for="customRange2">0 - 5 cylinders, step= 0.5</label>
+          <label for="cylinders" class="col-sm-6 col-form-label">Number of cylinders per month? (0 - 5 cylinders, step= 0.5)</label>
           <input
             type="range"
-            class="custom-range"
+            class="custom-range col-sm-4"
             min="0"
             max="5"
             step="0.5"
             name="cylinders"
+            oninput="num2.value = this.value"
           />
+          <output id="num2">0</output>
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="wasteBags"
-            >Daily waste generated Individually(Number of bags of waste)</label
+          <label for="wasteBags" class="col-sm-6 col-form-label"
+            >Daily waste generated Individually(Number of bags of waste) (0 - 5 bags, step = 0.5)</label
           >
-          <label for="wasteBags">0 - 5 bags, step = 0.5</label>
           <input
             type="range"
-            class="custom-range"
+            class="custom-range col-sm-4"
             min="0"
             max="5"
             step="0.5"
             name="wasteBags"
+            oninput="num3.value = this.value"
           />
+          <output id="num3">0</output>
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="travelBike">Average km travelled by bike in a day?</label>
-          <br />
-          <label for="travelBike">0 - 50 Kilometers, step = 10 km</label>
+          <label for="travelBike" class="col-sm-6 col-form-label">Average km travelled by bike in a day? (0 - 50 Kilometers, step = 10 km)</label>
           <input
             type="range"
-            class="custom-range"
+            class="custom-range col-sm-4"
             min="0"
             max="50"
             step="10"
             name="travelBike"
+            oninput="num4.value = this.value"
           />
+          <output id="num4">0</output>
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="travelCar">Average km travelled by car in a day?</label>
-          <br />
-          <label for="travelCar">0 - 50 Kilometers, step = 10km</label>
+          <label for="travelCar" class="col-sm-6 col-form-label">Average km travelled by car in a day? (0 - 50 Kilometers, step = 10km)</label>
           <input
             type="range"
-            class="custom-range"
+            class="custom-range col-sm-4"
             min="0"
             max="50"
             step="10"
             name="travelCar"
+            oninput="num5.value = this.value"
           />
+          <output id="num5">0</output>
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="family-members">Is your car CNG powered</label><br />
+          <label for="family-members" class="col-sm-6 col-form-label">Is your car CNG powered</label><br />
           <input class="form-check-input" type="radio" name="cng" value="yes" />
           <label class="form-check-label" for="cng">
             yes
@@ -146,46 +149,46 @@
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="travelBus">Average km travelled by bus in a day?</label>
-          <br />
-          <label for="travelBus">0 - 50 Kilometers, step = 10km</label>
+          <label for="travelBus" class="col-sm-6 col-form-label">Average km travelled by bus in a day? (0 - 50 Kilometers, step = 10km)</label>
           <input
             type="range"
-            class="custom-range"
+            class="custom-range col-sm-4"
             min="0"
             max="50"
             step="10"
             name="travelBus"
+            oninput="num6.value = this.value"
           />
+          <output id="num6">0</output>
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="travelTrain"
-            >Average km travelled by train in a YEAR?</label
+          <label for="travelTrain" class="col-sm-6 col-form-label"
+            >Average km travelled by train in a YEAR? (0 - 5000 Kilometers, step - 1000km)</label
           >
-          <br />
-          <label for="travelTrain">0 - 5000 Kilometers, step - 1000km</label>
           <input
             type="range"
-            class="custom-range"
+            class="custom-range col-sm-4"
             min="0"
             max="5000"
             step="1000"
             name="travelTrain"
+            oninput="num7.value = this.value"
           />
+          <output id="num7">0</output>
+        </div>
+        <!-- Next Question -->
+        <div class="form-group row mb-3">
+          <label for="travelFlightHours" class="col-sm-6 col-form-label">Average flight hours in a year? (in hrs)</label>
+          <div class="col-sm-4">
+            <input class="form-control" name="travelFlightHours">
+          </div>
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="travelFlightHours"
-            >Average flight hours in a year? (in hrs)</label
-          >
-          <input class="form-control" name="travelFlightHours" />
-        </div>
-        <!-- Next Question -->
-        <div class="form-group">
-          <label for="vegNonveg">Are you veg or non-veg?</label><br />
+          <label for="vegNonveg" class="col-sm-6 col-form-label">Are you veg or non-veg?</label><br />
           <input
-            class="form-check-input"
+            class="form-check-input col-sm-4"
             type="radio"
             name="vegNonveg"
             value="veg"
@@ -200,13 +203,13 @@
             name="vegNonveg"
             value="nonVeg"
           />
-          <label class="form-check-label" for="exampleRadios2" name="vegNonveg">
+          <label class="form-check-label" for="exampleRadios2" name="vegNonveg" >
             non-veg?
           </label>
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="dairyConsumption"
+          <label for="dairyConsumption" class="col-sm-4 col-form-label"
             >How often do you have dairy products? Count each glass of milk,
             scoop of ice cream, bowl of dahi, or sweets. </label
           ><br />
@@ -252,7 +255,7 @@
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="family-members"
+          <label for="family-members" class="col-sm-4 col-form-label"
             >How often do you have meat products?. </label
           ><br />
           <input
@@ -294,68 +297,85 @@
           <label class="form-check-label" for="meatConsumption">
             1-2 times a week
           </label>
+          <br />
+          <input
+            class="form-check-input"
+            type="radio"
+            name="meatConsumption"
+            value="Never"
+          />
+          <label class="form-check-label" for="meatConsumption">
+            Rarely/Never
+          </label>
         </div>
         <!-- Next Question -->
         <div class="form-group">
-          <label for="clothesBuy"
-            >How many clothes you buy in a month? - slider (0-10)</label
+          <label for="clothesBuy" class="col-sm-6 col-form-label">How many clothes you buy in a month? - slider (0-10) [0 - 10 clothes, step = 1]</label
           >
-          <br />
-          <label for="customRange2">0 - 10 clothes, step = 1</label>
           <input
             type="range"
-            class="custom-range"
+            class="custom-range col-sm-4"
             min="0"
             max="10"
             step="1"
             name="clothesBuy"
+            oninput="num8.value = this.value"
           />
+          <output id="num8">0</output>
         </div>
-        <div class="form-group">
-          <label for="choose-state">Choose your state.</label>
-          <select class="form-control" id="choose-state">
-            <option>Andhra Pradesh</option>
-            <option>Arunachal Pradesh</option>
-            <option>Assam</option>
-            <option name="Bihar" value="Bihar">Bihar</option>
-            <option>Chattisgharh</option>
-            <option>Goa</option>
-            <option>Gujarat</option>
-            <option>Haryana / Delhi</option>
-            <option>Himachal Pradesh</option>
-            <option>Jammu & Kashmir</option>
-            <option>Jharkand</option>
-            <option>Karnataka</option>
-            <option>Kerala</option>
-            <option>Madhya Pradesh</option>
-            <option>Maharashtra</option>
-            <option>Manipur</option>
-            <option>Meghalaya</option>
-            <option>Mizoram</option>
-            <option>Nagaland</option>
-            <option>Orissa</option>
-            <option>Punjab</option>
-            <option>Rajasthan</option>
-            <option>Sikkim</option>
-            <option>Tamil Nadu</option>
-            <option>Tripura</option>
-            <option>Uttar Pradesh</option>
-            <option>Uttaranchal</option>
-            <option>West Bengal</option>
-          </select>
+        <!-- Next question -->
+        <div class="form-group row mb-3">
+          <label for="choose-state" class="col-sm-6 col-form-label">Choose your state.</label>
+          <div class="col-sm-4">
+            <select name="state" class="form-control" id="choose-state">
+              <option>Andhra Pradesh</option>
+              <option>Arunachal Pradesh</option>
+              <option>Assam</option>
+              <option>Bihar</option>
+              <option>Chhattisgarh</option>
+              <option>Delhi</option>
+              <option>Goa</option>
+              <option>Gujarat</option>
+              <option>Haryana</option>
+              <option>Himachal Pradesh</option>
+              <option>Jammu and Kashmir</option>
+              <option>Jharkhand</option>
+              <option>Karnataka</option>
+              <option>Kerala</option>
+              <option>Madhya Pradesh</option>
+              <option>Maharashtra</option>
+              <option>Manipur</option>
+              <option>Meghalaya</option>
+              <option>Mizoram</option>
+              <option>Nagaland</option>
+              <option>Orissa</option>
+              <option>Punjab</option>
+              <option>Rajasthan</option>
+              <option>Sikkim</option>
+              <option>Tamil Nadu</option>
+              <option>Tripura</option>
+              <option>Uttar Pradesh</option>
+              <option>Uttarakhand</option>
+              <option>West Bengal</option>
+            </select>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="username">Your name</label>
+        <div class="form-group row mb-3">
+          <label for="username" class="col-sm-6 col-form-label">Your name</label>
           <br />
-          <input class="form-control" name="username" />
+          <div class="col-sm-4">
+            <input class="form-control" name="username" />
+          </div>
         </div>
-        <div class="form-group">
-          <label for="username">Your email</label>
+        <div class="form-group row mb-3">
+          <label for="username" class="col-sm-6 col-form-label">Your email</label>
           <br />
-          <input class="form-control" name="email" />
+          <div class="col-sm-4">
+            <input class="form-control" name="email" />
+          </div>
         </div>
-        <div>
-          <input type="submit" />
+        <div id="submit-button">
+          <input type="submit" class="btn btn-primary" />
         </div>
       </form>
     </div>

@@ -59,7 +59,7 @@ app.post("/results", function (req, res) {
     "&familyMembers=" +
     (req.body.familyMembers || 2) +
     "&electricityBill=" +
-    (req.body.electricityBill || 3000) +
+    (req.body.electricityBill || 2000) +
     "&cylinders=" +
     (req.body.cylinders || 1) +
     "&wasteBags=" +
@@ -77,11 +77,11 @@ app.post("/results", function (req, res) {
     "&travelFlightHours=" +
     (req.body.travelFlightHours || 2) +
     "&vegNonveg=" +
-    (req.body.vegNonveg || "nonVeg") +
+    (req.body.vegNonveg || "veg") +
     "&dairyConsumption=" +
     (req.body.dairyConsumption || "Everyday") +
     "&meatConsumption=" +
-    (req.body.meatConsumption || "Everyday") +
+    (req.body.meatConsumption || "Never") +
     "&clothesBuy=" +
     (req.body.clothesBuy || 1);
   // console.log(str);
@@ -107,6 +107,45 @@ app.post("/results", function (req, res) {
     .ref("footprintData/" + id)
     .set(userData);
   res.redirect("results" + str);
+});
+
+app.post("/save", function (req, res) {
+  // console.log(req.body);
+  var currentdate = new Date();
+  var plan = 1;
+  var y = "-1";
+  if (req.body.plan2) {
+    plan = 2;
+    y = "-2";
+  } else if (req.body.plan3) {
+    plan = 3;
+    y = "-3";
+  }
+  var date = currentdate.toDateString();
+  var time =
+    currentdate.getHours() +
+    ":" +
+    currentdate.getMinutes() +
+    ":" +
+    currentdate.getSeconds();
+  var userData = {
+    email: req.body.email,
+    plan: plan,
+    date: date,
+    time: time,
+  };
+
+  // console.log(userData)
+  const id = makeId();
+
+  firebase
+    .database()
+    .ref("userdata/" + id)
+    .set(userData);
+
+  const x = "?save=true";
+
+  res.redirect("/signup" + y + x);
 });
 
 app.get("/report/:userId", function (req, res) {

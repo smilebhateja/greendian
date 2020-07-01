@@ -40,7 +40,7 @@
     <div class="section-report">
       <h1 id="result-heading">Footprint Calculator Results</h1>
       <p style="text-align: center; font-size: 25px;">
-        Your output is <span id="imp">2.0</span> tonnes.
+        Your output is <span id="emissionFinal"></span> tonnes.
       </p>
       <div style="justify-content: center;">
         <p style="text-align: center;">
@@ -98,12 +98,13 @@
         </div>
         <div style="width: 50%;">
           <!-- <h2>About  state %></h2> -->
-          <h2>About your state</h2>
-          <p>
+          <h2>About <span id="stateInput"></span></h2>
+          <p><span id="stateFact"></span></p>
+          <!-- <p>
             Home to about 18 million people. Mumbai is at a high risk of costal
             flooding by 2050 even if the target of limiting global warming to
             2*C is achieved.
-          </p>
+          </p> -->
         </div>
       </div>
     </div>
@@ -121,12 +122,12 @@ Under 2°C warming by the 2050s, the country may need to import more than twice 
         r[name] = value;
         // console.log(r);
       });
-      console.log(r.cylinders);
+      // console.log(r.cylinders);
 
-      const state = r.state || "Haryana";
+      const state = r.state || "Maharashtra";
       const gender = r.gender || "male";
       const familyMembers = r.familyMembers || 4;
-      const electricityBill = r.electricityBill || 12000;
+      const electricityBill = r.electricityBill || 2000;
       const cylinders = r.cylinders || 1;
       const wasteBags = r.wasteBags || 3;
       const travelBike = r.travelBike || 10;
@@ -134,47 +135,170 @@ Under 2°C warming by the 2050s, the country may need to import more than twice 
       const cng = r.cng || "yes";
       const travelBus = r.travelBus || 0;
       const travelTrain = r.travelTrain || 11;
-      const travelFlightHours = r.travelFlightHours || 30;
-      const vegNonveg = r.vegNonveg || "nonVeg";
+      const travelFlightHours = r.travelFlightHours || 10;
+      const vegNonveg = r.vegNonveg || "veg";
       const dairyConsumption = r.dairyConsumption || "Everyday";
-      const meatConsumption = r.meatConsumption || "Everyday";
+      const meatConsumption = r.meatConsumption || "Never";
       const clothesBuy = r.buy || 3;
 
       var emissionFactors = [
-        ["Bihar", 2.1],
-        ["Jharkhand", 1.68],
-        ["Orissa", 0.88],
-        ["West Bengal", 1.29],
-        ["Sikkim", 1.04],
-        ["Assam", 1.21],
-        ["Manipur", 1.56],
-        ["Meghalaya", 0.42],
-        ["Nagaland", 1.41],
-        ["Tripura", 1.69],
-        ["Arunachal Pradesh", 0.11],
-        ["Mizoram", 0.65],
-        ["Haryana", 1.27],
-        ["Himachal Pradesh", 0.26],
-        ["Jammu & Kashmir", 0.81],
-        ["Punjab", 0.97],
-        ["Rajasthan", 1.21],
-        ["Uttar Pradesh", 1.61],
-        ["Uttarakhand", 0.12],
-        ["Delhi", 1.05],
-        ["Andhra Pradesh", 0.91],
-        ["Gujarat", 1.02],
-        ["Madhya Pradesh", 1.68],
-        ["Chhattisgarh", 1.37],
-        ["Maharashtra", 1.26],
-        ["Goa", 0.71],
-        ["Karnataka", 0.7],
-        ["Kerala", 0.13],
-        ["Tamil Nadu", 1.13],
+        [
+          "Bihar",
+          2.1,
+          "Six states, Uttar Pradesh (402,280), Bihar (136,372), Rajasthan (121,809), Andhra Pradesh (116,920), Madhya Pradesh (108,370), and Maharashtra (106,749) are estimated to contribute 64% of the annual total excess deaths due to climate change by 2100.",
+        ],
+        [
+          "Jharkhand",
+          1.68,
+          "Droughts are expected to be more frequent in some areas, especially in north-western India, Jharkhand, Orissa and Chhattisgarh. Crop yields are expected to fall significantly because of extreme heat by the 2040s",
+        ],
+        [
+          "Orissa",
+          0.88,
+          "All of the coastline of orissa falls in flooding zone with half million people severely affected by rising sea levels. Droughts are expected to be more frequent in some areas, especially in north-western India, Jharkhand, Orissa and Chhattisgarh. Crop yields are expected to fall significantly because of extreme heat by the 2040s",
+        ],
+        [
+          "West Bengal",
+          1.29,
+          "Hundreds of towns around hoogly including kolkata at a risk of annual flooding by 2050",
+        ],
+        [
+          "Sikkim",
+          1.04,
+          "Due to unpredictable monson at 2*C warming threat to water security is very high over central India, along the mountain ranges of the Western Ghats, and in India’s northeastern state",
+        ],
+        [
+          "Assam",
+          1.21,
+          "Due to unpredictable monson at 2*C warming threat to water security is very high over central India, along the mountain ranges of the Western Ghats, and in India’s northeastern state",
+        ],
+        [
+          "Manipur",
+          1.56,
+          "Due to unpredictable monson at 2*C warming threat to water security is very high over central India, along the mountain ranges of the Western Ghats, and in India’s northeastern state",
+        ],
+        [
+          "Meghalaya",
+          0.42,
+          "Due to unpredictable monson at 2*C warming threat to water security is very high over central India, along the mountain ranges of the Western Ghats, and in India’s northeastern state",
+        ],
+        [
+          "Nagaland",
+          1.41,
+          "Due to unpredictable monson at 2*C warming threat to water security is very high over central India, along the mountain ranges of the Western Ghats, and in India’s northeastern state",
+        ],
+        [
+          "Tripura",
+          1.69,
+          "Due to unpredictable monson at 2*C warming threat to water security is very high over central India, along the mountain ranges of the Western Ghats, and in India’s northeastern state",
+        ],
+        [
+          "Arunachal Pradesh",
+          0.11,
+          "Due to unpredictable monson at 2*C warming threat to water security is very high over central India, along the mountain ranges of the Western Ghats, and in India’s northeastern state",
+        ],
+        [
+          "Mizoram",
+          0.65,
+          "Due to unpredictable monson at 2*C warming threat to water security is very high over central India, along the mountain ranges of the Western Ghats, and in India’s northeastern state",
+        ],
+        [
+          "Haryana",
+          1.27,
+          "Increase in 3*C of temprature due to climate change could decrease the production of wheat, rice and maize crops in haryana by 25%",
+        ],
+        [
+          "Himachal Pradesh",
+          0.26,
+          "The melting of Himalayan glaciers has doubled since the turn of the century, with more than a quarter of all ice lost over the last four decades",
+        ],
+        [
+          "Jammu and Kashmir",
+          0.81,
+          "The melting of Himalayan glaciers has doubled since the turn of the century, with more than a quarter of all ice lost over the last four decades",
+        ],
+        [
+          "Punjab",
+          0.97,
+          "Rise in temperature due to climate change will reduce the rice production by 6-8% by 2022 in the state of Punjab.",
+        ],
+        [
+          "Rajasthan",
+          1.21,
+          "Rajasthan is a drought affected state and also prolonged dry spells have seen an increase of about 7.82% per decade",
+        ],
+        [
+          "Uttar Pradesh",
+          1.61,
+          "Six states, Uttar Pradesh (402,280), Bihar (136,372), Rajasthan (121,809), Andhra Pradesh (116,920), Madhya Pradesh (108,370), and Maharashtra (106,749) are estimated to contribute 64% of the annual total excess deaths due to climate change by 2100.",
+        ],
+        [
+          "Uttarakhand",
+          0.12,
+          "The melting of Himalayan glaciers has doubled since the turn of the century, with more than a quarter of all ice lost over the last four decades",
+        ],
+        [
+          "Delhi",
+          1.05,
+          "Situation of delhi is critical. If the high-emission scenario continues, Delhi will likely see 23,000 climate-related deaths annually by 2100.",
+        ],
+        [
+          "Andhra Pradesh",
+          0.91,
+          "Andhra Pradesh is a drought affected state and also prolonged dry spells have seen an increase of about 7.82% per decade",
+        ],
+        [
+          "Gujarat",
+          1.02,
+          "In surat vast chunk of city faces a risk of annual flooding due to rise in sea levels",
+        ],
+        [
+          "Madhya Pradesh",
+          1.68,
+          "Due to unpredictable monson at 2*C warming threat to water security is very high over central India, along the mountain ranges of the Western Ghats, and in India’s northeastern state",
+        ],
+        [
+          "Chhattisgarh",
+          1.37,
+          "Droughts are expected to be more frequent in some areas, especially in north-western India, Jharkhand, Orissa and Chhattisgarh. Crop yields are expected to fall significantly because of extreme heat by the 2040s",
+        ],
+        [
+          "Maharashtra",
+          1.26,
+          "Home to about 18 million people. Mumbai is at a high risk of costal flooding by 2050 even if the target of limiting global warming to 2*C is achieved. Also, Maharashtra is a drought affected state and also prolonged dry spells have seen an increase of about 7.82% per decade",
+        ],
+        [
+          "Goa",
+          0.71,
+          "Goa is a drought affected state and also prolonged dry spells have seen an increase of about 7.82% per decade",
+        ],
+        [
+          "Karnataka",
+          0.7,
+          "Karnataka is a drought affected state and also prolonged dry spells have seen an increase of about 7.82% per decade",
+        ],
+        [
+          "Kerala",
+          0.13,
+          "Large parts of Alappuzha and Kottayam in Kerela could be in annual flooding risk zones due to rising sea levels",
+        ],
+        [
+          "Telengana",
+          1.13,
+          "Telangana is a drought affected state and also prolonged dry spells have seen an increase of about 7.82% per decade",
+        ],
+        [
+          "Tamil Nadu",
+          1.13,
+          "Districts along northern coasts including Chennai, Thiruvallur and Kanchipuram are at high risk of flooding due to increase in sea level",
+        ],
       ];
       let emissionFactor;
+      let stateFact;
       for (var i = 0; i < emissionFactors.length; i++) {
         if (emissionFactors[i][0] == state) {
           emissionFactor = emissionFactors[i][1];
+          stateFact = emissionFactors[i][2];
         }
       }
       var emissionFuel =
@@ -210,6 +334,8 @@ Under 2°C warming by the 2050s, the country may need to import more than twice 
             return 1;
           case "2-3 times a day":
             return "multiple";
+          case "Never":
+            return 0;
         }
       }
 
@@ -250,6 +376,12 @@ Under 2°C warming by the 2050s, the country may need to import more than twice 
           (emissionFuel + emissionFood + emissionTravel + emissionProduct) * 1.2
         ) / 100;
       console.log(emissionTotal);
+
+      window.onload = function () {
+        document.getElementById("emissionFinal").innerHTML = emissionTotal;
+        document.getElementById("stateInput").innerHTML = state;
+        document.getElementById("stateFact").innerHTML = stateFact;
+      };
 
       // Generating Report
       var ctx = document.getElementById("default").getContext("2d");
